@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTA MC | Ultra Premium Hub</title>
+    <style>
+        /* YATAY/DİKEY TABLET UYUMLU ULTRA LÜKS TASARIM */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #0a0516;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            /* overflow: hidden; KISMINI SİLDİK, BÖYLECE YATAYDA DA YUKARI AŞAĞI KAYDIRILABİLECEK */
+            overflow-y: auto; 
+            position: relative;
+        }
+
+        /* Arka Plandaki Işıklar Sabitlendi */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #ff007f, #7928ca);
+            border-radius: 50%;
+            top: -50px;
+            left: -50px;
+            filter: blur(150px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #00dfa2, #00f5ff);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+            filter: blur(150px);
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        /* Premium Kart Tasarımı Güçlendirildi */
+        .cyber-card {
+            background: rgba(15, 10, 32, 0.85); /* Biraz daha belirgin yaptık */
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 540px;
+            text-align: center;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 
+                        0 0 50px rgba(121, 40, 202, 0.3);
+            position: relative;
+            z-index: 1;
+            /* Animasyonu tabletler için daha hafiflettik */
+            animation: ultraFirlat 0.6s ease-out; 
+        }
+
+        @keyframes ultraFirlat {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Canlı Durum Rozeti */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(90deg, rgba(0, 245, 255, 0.1), rgba(0, 223, 162, 0.1));
+            border: 1px solid #00dfa2;
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #00dfa2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(0, 223, 162, 0.3);
+        }
+
+        .neon-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #00dfa2;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00dfa2;
+            animation: siberNabiz 1s infinite alternate;
+        }
+
+        @keyframes siberNabiz {
+            from { transform: scale(0.8); opacity: 0.5; }
+            to { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* RGB Başlık */
+        h1 {
+            font-size: 38px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00f5ff, #ff007f, #ffdd00);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            animation: rgbAkis 6s ease infinite;
+        }
+
+        @keyframes rgbAkis {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subtitle {
+            color: #8c88a5;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* IP Adres Kutusu */
+        .ip-header {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 800;
+            color: #ff007f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        .luxury-box {
+            background: rgba(5, 3, 10, 0.9);
+            border: 2px solid rgba(255, 0, 127, 0.3);
+            border-radius: 20px;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .ip-code {
+            font-family: 'Consolas', monospace;
+            font-size: 15px;
+            color: #00f5ff;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+            word-break: break-all; /* Uzun IP tablet sığsın diye */
+            padding-right: 10px;
+        }
+
+        .vip-copy-btn {
+            background: linear-gradient(135deg, #ff007f 0%, #7928ca 100%);
+            border: none;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 14px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 0, 127, 0.3);
+            flex-shrink: 0; /* Butonun küçülmesini engeller */
+            transition: all 0.2s ease;
+        }
+
+        .vip-copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Özellikler */
+        .luxury-list {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .list-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: #ffdd00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .list-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #d1cee7;
+        }
+
+        .list-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .row-icon {
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px;
+            border-radius: 10px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Katıl Butonu */
+        .ultimate-btn {
+            display: block;
+            background: linear-gradient(90deg, #00f5ff, #00dfa2, #ffdd00, #00f5ff);
+            background-size: 300% auto;
+            color: #05030a;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 15px 40px rgba(0, 245, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .ultimate-btn:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cyber-card">
+        <div class="live-badge">
+            <div class="neon-dot"></div>
+            <span>Topluluk Merkez Üssü Hazırlanıyor</span>
+        </div>
+
+        <h1>HTA MC HUB</h1>
+        <p class="subtitle">Element X Resmi Sohbet & Yardımlaşma Alanı</p>
+
+        <div class="ip-header">Kopyalanacak Grup Odası (IP)</div>
+        <div class="luxury-box">
+            <span class="ip-code" id="target-ip">#htamcgruppublic:matrix.org</span>
+            <button class="vip-copy-btn" onclick="luxeKopyala()">Kopyala</button>
+        </div>
+
+        <div class="luxury-list">
+            <div class="list-title">Aramıza Katıldığında Neler Olacak?</div>
+            
+            <div class="list-row">
+                <div class="row-icon">⚔️</div>
+                <span>Birlikte Modlu & Vanilla Survival Maceraları</span>
+            </div>
+            <div class="list-row">
+                <div class="row-icon">🚀</div>
+                <span>PojavLauncher & PC Özel FPS Uçurma Taktikleri</span>
+            </div>
+            <div class="list-row">
+                <div class="row-icon">💎</div>
+                <span>Sodium ve En Sağlam Performans Modu Paylaşımları</span>
+            </div>
+            <div class="list-row">
+                <div class="row-icon">🎧</div>
